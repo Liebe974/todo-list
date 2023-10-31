@@ -31,10 +31,7 @@ form.addEventListener("submit", function (e) {
 });
 // Delete task individually
 container.addEventListener("click", function (e) {
-  if (e.target.tagName === "DIV") {
-    e.target.classList.toggle("checked");
-    saveData();
-  } else if (e.target.tagName === "BUTTON") {
+  if (e.target.tagName === "BUTTON") {
     e.target.parentElement.remove();
     saveData();
   }
