@@ -27,8 +27,24 @@ form.addEventListener("submit", function (e) {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   taskInput.value = "";
-})
+  saveData();
+});
 // Delete task individually
+container.addEventListener("click", function (e) {
+  if (e.target.tagName === "DIV") {
+    e.target.classList.toggle("checked");
+    saveData();
+  } else if (e.target.tagName === "BUTTON") {
+    e.target.parentElement.remove();
+    saveData();
+  }
+});
+//add task to cache (local storage) : persist data
+function saveData() {
+  localStorage.setItem("data", container.innerHTML);
+}
 
-
-// TODO : add task to cache (local storage) : persist data
+function showTasks() {
+  container.innerHTML = localStorage.getItem("data");
+}
+showTasks();
